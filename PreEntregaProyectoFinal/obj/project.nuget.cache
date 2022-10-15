@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "b+h+JZyG3kWPb33HzOTaGIdHIwGiOqYmy/rPkMP4pXef6Vm31Xtx4H+biO4gQqh6TTZuJsm5Z0yjgGWuMwzkvg==",
+  "dgSpecHash": "OVcSeygGamVmYdKuZ1RCZqNqPgdjD2gCrpRwVx5fMZq8KYUs6PfTJ8nCDoSedqA2/plHrszFgBqhoZhaktYyIw==",
   "success": true,
-  "projectFilePath": "D:\\CURSOS\\CURSO C#\\ProgramasCursoC_Sharp_CoderHouse\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj",
+  "projectFilePath": "D:\\CURSOS\\CURSO C#\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\omar.galdames\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\omar.galdames\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

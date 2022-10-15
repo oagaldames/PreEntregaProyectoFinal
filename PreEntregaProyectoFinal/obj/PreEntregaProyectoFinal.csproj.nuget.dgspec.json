@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CURSOS\\CURSO C#\\ProgramasCursoC_Sharp_CoderHouse\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj": {}
+    "D:\\CURSOS\\CURSO C#\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj": {}
   },
   "projects": {
-    "D:\\CURSOS\\CURSO C#\\ProgramasCursoC_Sharp_CoderHouse\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj": {
+    "D:\\CURSOS\\CURSO C#\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CURSOS\\CURSO C#\\ProgramasCursoC_Sharp_CoderHouse\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj",
+        "projectUniqueName": "D:\\CURSOS\\CURSO C#\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj",
         "projectName": "PreEntregaProyectoFinal",
-        "projectPath": "D:\\CURSOS\\CURSO C#\\ProgramasCursoC_Sharp_CoderHouse\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj",
+        "projectPath": "D:\\CURSOS\\CURSO C#\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal.csproj",
         "packagesPath": "C:\\Users\\omar.galdames\\.nuget\\packages\\",
-        "outputPath": "D:\\CURSOS\\CURSO C#\\ProgramasCursoC_Sharp_CoderHouse\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\obj\\",
+        "outputPath": "D:\\CURSOS\\CURSO C#\\PreEntregaProyectoFinal\\PreEntregaProyectoFinal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
