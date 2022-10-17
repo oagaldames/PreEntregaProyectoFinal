@@ -8,7 +8,7 @@ namespace PreEntregaProyectoFinal.Clases
 {
     public static class Parametros
     {
-        public static string Servidor { get; set; }
-        public static string BaseDeDatos { get; set; }
+        public static readonly string Servidor = @"DESKTOP-4PV4E19\SQLEXPRESS";
+        public static readonly string BaseDeDatos= "SistemaGestion";
     }
 }

@@ -1,6 +1,7 @@
 ﻿using PreEntregaProyectoFinal.Clases;
 using PreEntregaProyectoFinal.Funciones;
 using PreEntregaProyectoFinal.Metodos;
+using System.Data.SqlClient;
 
 namespace PreEntregaProyectoFinal
 {
@@ -10,24 +11,16 @@ namespace PreEntregaProyectoFinal
         {
             Console.WriteLine("***PRE ENTREGA PROYECTO FINAL CODERHOUSE***");
 
-            //*** paso como parametros los datos del servidor y base de datos 
-            Parametros.Servidor = @"DESKTOP-4PV4E19\SQLEXPRESS";
-            Parametros.BaseDeDatos = "SistemaGestion";
-
             // Verifico conexion al SQL
             DataSql db = new DataSql();
-            db.StrDatabase = Parametros.BaseDeDatos;
-            db.StrServidor = Parametros.Servidor;
-
+            
             if (!db.ConectarSQL())
             {
                 Console.WriteLine("\nERROR DE CONECCION CON EL SQL");
             }
             else
             {
-
-
-                // Prueba punto a Traer Usuario:  Recibe como parámetro un nombre del usuario,
+                 // Prueba punto a Traer Usuario:  Recibe como parámetro un nombre del usuario,
                 // buscarlo en la base de datos y devolver el objeto con todos sus datos 
                 Console.WriteLine("\n***TEST PUNTO A ***\nINGRESE EL NOMBRE DEL USUARIO A BUSCAR");
 
@@ -43,8 +36,8 @@ namespace PreEntregaProyectoFinal
                     Console.WriteLine("DATOS  USUARIO  CON NOMBRE {0}", nombreIngresado);
                     foreach (Usuario usuariosDevueltos in listaUsuariosDevueltos)
                     {
-                        Console.WriteLine("\nID: {0}\nNOMBRE: {1}\nAPELLIDO: {1}\nNOMBREUSUARIO:{2} " +
-                            "\nCONTRASEÑA: {3}\nEMAIL: {4}"
+                        Console.WriteLine("\nID: {0}\nNOMBRE: {1}\nAPELLIDO: {2}\nNOMBREUSUARIO:{3} " +
+                            "\nCONTRASEÑA: {4}\nEMAIL: {5}"
                             , usuariosDevueltos.Id.ToString()
                             , usuariosDevueltos.Nombre.ToString()
                             ,usuariosDevueltos.Apellido.ToString()
@@ -93,16 +86,15 @@ namespace PreEntregaProyectoFinal
                 if (ingOK)
                 {
 
-                    List<Producto> listaProductosVendidos = new List<Producto>();
+                    List<ProductoVendido> listaProductosVendidos = new List<ProductoVendido>();
                     MetodosProducto metodosProductoVendidos = new MetodosProducto();
                     listaProductosVendidos = MetodosProductosVendidos.TraerProductosVendidos(idIngresado);
                     Console.WriteLine("\nPRODUCTOS VENDIDOS POR USUARIO ID {0}", idIngresado);
 
-                    foreach (Producto productosvendidos in listaProductosVendidos)
+                    foreach (ProductoVendido productosvendidos in listaProductosVendidos)
                     {
-                        Console.WriteLine("\nID: {0} - DESCRIPCION: {1} - CANTIDAD VENDIDA: {2} "
+                        Console.WriteLine("\nIDPRODUCTO: {0} - CANTIDAD VENDIDA: {1} "
                             , productosvendidos.Id.ToString()
-                            , productosvendidos.Descripciones.ToUpper()
                             , productosvendidos.Stock.ToString());
                     }
                 }

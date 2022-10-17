@@ -1,4 +1,5 @@
 ﻿using PreEntregaProyectoFinal.Clases;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace PreEntregaProyectoFinal.Funciones
@@ -11,13 +12,17 @@ namespace PreEntregaProyectoFinal.Funciones
             try
             { 
                 DataSql db = new DataSql();
-                db.StrDatabase= Parametros.BaseDeDatos;
-                db.StrServidor= Parametros.Servidor;
+                //db.StrDatabase= Parametros.BaseDeDatos;
+                //db.StrServidor= Parametros.Servidor;
                 
                 if (db.ConectarSQL())
                 {
                     SqlCommand cmd = db.Connection.CreateCommand();
-                    cmd.CommandText = "SELECT * FROM Usuario WHERE Nombre='" + Nombre + "'";
+                    cmd.CommandText = "SELECT * FROM Usuario WHERE Nombre=@NomUsu";
+                    var paramNomUsu = new SqlParameter("NomUsu", SqlDbType.VarChar);
+                    paramNomUsu.Value = Nombre;
+                    cmd.Parameters.Add(paramNomUsu);
+
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -25,8 +30,9 @@ namespace PreEntregaProyectoFinal.Funciones
                         usuario.Id = Convert.ToInt32(reader.GetValue(0));
                         usuario.Nombre = reader.GetValue(1).ToString();
                         usuario.Apellido = reader.GetValue(2).ToString();
-                        usuario.Contraseña = reader.GetValue(3).ToString();
-                        usuario.Mail = reader.GetValue(4).ToString();
+                        usuario.NombreUsuario = reader.GetValue(3).ToString();
+                        usuario.Contraseña = reader.GetValue(4).ToString();
+                        usuario.Mail = reader.GetValue(5).ToString();
                         listaUsuarios.Add(usuario);
                      }
 
@@ -48,14 +54,21 @@ namespace PreEntregaProyectoFinal.Funciones
             try
             { 
                 DataSql db = new DataSql();
-                db.StrDatabase = Parametros.BaseDeDatos;
-                db.StrServidor = Parametros.Servidor;
-                
+                               
                 if (db.ConectarSQL())
                 {
                     SqlCommand cmd = db.Connection.CreateCommand();
-                    cmd.CommandText = "SELECT * FROM Usuario WHERE NombreUsuario='" + NombreUsuario + "'" +
-                        "AND Contraseña='" + Pass +"'";
+                    cmd.CommandText = "SELECT * FROM Usuario WHERE NombreUsuario=@NomUsu AND Contraseña=@passUsu";
+
+                    var paramNomUsu = new SqlParameter("NomUsu", SqlDbType.VarChar);
+                    paramNomUsu.Value = NombreUsuario;
+
+                    var paramPass = new SqlParameter("passUsu", SqlDbType.VarChar);
+                    paramPass.Value = Pass;
+
+                    cmd.Parameters.Add(paramNomUsu);
+                    cmd.Parameters.Add(paramPass);
+
                     var reader = cmd.ExecuteReader();
                     var usuario = new Usuario();
                     if (reader.HasRows)

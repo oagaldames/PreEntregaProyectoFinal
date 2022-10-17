@@ -1,6 +1,7 @@
 ﻿using PreEntregaProyectoFinal.Clases;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -17,10 +18,7 @@ namespace PreEntregaProyectoFinal.Metodos
             try
             { 
                 DataSql db = new DataSql();
-                db.StrDatabase = Parametros.BaseDeDatos;
-                db.StrServidor = Parametros.Servidor;
-                
-
+               
                 if (db.ConectarSQL())
                 {
                     SqlCommand cmd = db.Connection.CreateCommand();
@@ -29,7 +27,12 @@ namespace PreEntregaProyectoFinal.Metodos
                         "FROM ProductoVendido " +
                         "inner join Producto On ProductoVendido.IdProducto = Producto.id " +
                         "inner join Venta on ProductoVendido.IdVenta = Venta.Id " +
-                        "WHERE Venta.IdUsuario = "+ IdUsuario;
+                        "WHERE Venta.IdUsuario = @IdUsu";
+
+                    var paramIdUsu = new SqlParameter("IdUsu", SqlDbType.BigInt);
+                    paramIdUsu.Value = IdUsuario;
+                    cmd.Parameters.Add(paramIdUsu);
+                    
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {

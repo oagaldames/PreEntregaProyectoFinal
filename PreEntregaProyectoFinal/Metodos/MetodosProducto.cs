@@ -1,6 +1,7 @@
 ﻿using PreEntregaProyectoFinal.Clases;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,17 @@ namespace PreEntregaProyectoFinal.Metodos
             try
             {
                 DataSql db = new DataSql();
-                db.StrDatabase = Parametros.BaseDeDatos;
-                db.StrServidor = Parametros.Servidor;
-            
+                            
                 if (db.ConectarSQL())
                 {
                     SqlCommand cmd = db.Connection.CreateCommand();
-                    cmd.CommandText = "SELECT * FROM Producto WHERE IdUsuario=" + IdUsuario ;
+                    cmd.CommandText = "SELECT * FROM Producto WHERE IdUsuario=@IdUsu";
+
+                    var paramIdUsu = new SqlParameter("IdUsu", SqlDbType.BigInt);
+                    paramIdUsu.Value = IdUsuario;
+
+                    cmd.Parameters.Add(paramIdUsu);
+                    
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {

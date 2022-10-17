@@ -10,24 +10,16 @@ namespace PreEntregaProyectoFinal.Clases
     public class DataSql
     {
 
-        public  string StrServidor { get; set; }
-        public string StrDatabase { get; set; }
-
         public SqlConnection Connection { get; set; }
 
 
         public DataSql()
         {
-           StrServidor = string.Empty;
-           StrDatabase = string.Empty;
-            
+           
         }
 
-        
-        public DataSql(string strServidor, string strDatabase, SqlConnection connection)
+        public DataSql(SqlConnection connection)
         {
-            StrServidor = strServidor;
-            StrDatabase = strDatabase;
             Connection = connection;
         }
 
@@ -36,8 +28,8 @@ namespace PreEntregaProyectoFinal.Clases
            try
            { 
                 SqlConnectionStringBuilder connectionBuilder = new();
-                connectionBuilder.DataSource = StrServidor;
-                connectionBuilder.InitialCatalog = StrDatabase;
+                connectionBuilder.DataSource = Parametros.Servidor;
+                connectionBuilder.InitialCatalog = Parametros.BaseDeDatos;
                 connectionBuilder.IntegratedSecurity = true;
                 var cs = connectionBuilder.ConnectionString;
                 Connection = new SqlConnection(cs);
@@ -61,7 +53,6 @@ namespace PreEntregaProyectoFinal.Clases
 
 
         }
-
 
         public void DesconectarSQL()
         {
