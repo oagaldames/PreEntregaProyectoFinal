@@ -93,7 +93,7 @@ namespace PreEntregaProyectoFinal
 
                     foreach (ProductoVendido productosvendidos in listaProductosVendidos)
                     {
-                        Console.WriteLine("\nIDPRODUCTO: {0} - CANTIDAD VENDIDA: {1} "
+                        Console.WriteLine("\nIDPRODUCTO: {0} - STOCK: {1} "
                             , productosvendidos.Id.ToString()
                             , productosvendidos.Stock.ToString());
                     }
@@ -110,16 +110,16 @@ namespace PreEntregaProyectoFinal
                 if (ingOK)
                 {
 
-                    List<Producto> listaProductosVendidosPorUsuario = new List<Producto>();
+                    List<Venta> listaProductosVendidosPorUsuario = new List<Venta>();
                     MetodosVentas metodosProductoVendidosPorUsuario = new MetodosVentas();
                     listaProductosVendidosPorUsuario = MetodosVentas.TraerVentasPorUsuario(idIngresado);
                     Console.WriteLine("\nVENTAS POR USUARIO POR USUARIO ID {0}", idIngresado);
-                    foreach (Producto ventasUsuario in listaProductosVendidosPorUsuario)
+                    foreach (Venta ventasUsuario in listaProductosVendidosPorUsuario)
                     {
-                        Console.WriteLine("\n DESCRIPCION: {0} - CANTIDAD VENDIDA: {1} - MONTO VENDIDO {2}"
-                            , ventasUsuario.Descripciones.ToUpper()
-                            , ventasUsuario.Stock.ToString()
-                            , ventasUsuario.Costo.ToString());
+                        Console.WriteLine("\n IDVENTA: {0} - COMENTARIOS: {1} - IDUSUARIO {2}"
+                            , ventasUsuario.Id
+                            , ventasUsuario.Comentarios.ToString()
+                            , ventasUsuario.IdUsuario);
                     }
                 }
                 else

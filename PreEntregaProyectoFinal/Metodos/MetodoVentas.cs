@@ -12,9 +12,9 @@ namespace PreEntregaProyectoFinal.Metodos
 {
     public class MetodosVentas
     {
-        public static List<Producto> TraerVentasPorUsuario(int IdUsuario)
+        public static List<Venta> TraerVentasPorUsuario(int IdUsuario)
         {
-            var listaProductos = new List<Producto>();
+            var listaVenta = new List<Venta>();
             try
             { 
                 DataSql db = new DataSql();
@@ -22,12 +22,8 @@ namespace PreEntregaProyectoFinal.Metodos
                 if (db.ConectarSQL())
                 {
                     SqlCommand cmd = db.Connection.CreateCommand();
-                    cmd.CommandText = "SELECT Producto.Descripciones," +
-                        "ProductoVendido.Stock,(Producto.PrecioVenta * ProductoVendido.Stock) AS monto " +
-                        "FROM ProductoVendido " +
-                        "inner join Producto On ProductoVendido.IdProducto = Producto.id " +
-                        "inner join Venta on ProductoVendido.IdVenta = Venta.Id " +
-                        "WHERE Venta.IdUsuario = @IdUsu";
+                    cmd.CommandText = "SELECT * FROM Venta " +
+                                      "WHERE IdUsuario = @IdUsu";
 
                     var paramIdUsu = new SqlParameter("IdUsu", SqlDbType.BigInt);
                     paramIdUsu.Value = IdUsuario;
@@ -36,24 +32,24 @@ namespace PreEntregaProyectoFinal.Metodos
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var producto = new Producto();
-                        producto.Descripciones = reader.GetValue(0).ToString();
-                        producto.Stock = Convert.ToInt32(reader.GetValue(1));
-                        producto.Costo = Convert.ToDouble(reader.GetValue(2));
-                    
-                        listaProductos.Add(producto);
+                        var venta = new Venta();
+                        venta.Id = Convert.ToInt32(reader.GetValue(0).ToString());
+                        venta.Comentarios = reader.GetValue(1).ToString();
+                        venta.IdUsuario = Convert.ToInt32(reader.GetValue(2));
+
+                        listaVenta.Add(venta);
 
                     }
                     reader.Close();
                     db.DesconectarSQL();
                 }
-                return listaProductos;
+                return listaVenta;
             }
             catch (Exception err)
             {
                 string error = err.Message;
                 Console.WriteLine("\nERROR TraerVentasPorUsuario  " + error);
-                return listaProductos;
+                return listaVenta;
             }
         }
     }
